@@ -5,7 +5,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(cors({ origin: 'https://gdbf-frontend-cahpskhk5-jerry-jobs-projects.vercel.app/' }));
+app.use(cors({ origin: 'https://gdbf-frontend-cahpskhk5-jerry-jobs-projects.vercel.app' }));
 
 const db = require('./models');
 // db.sequelize.sync({ force:true });
