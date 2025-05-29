@@ -9,9 +9,10 @@ app.use(express.json());
 app.use(cors({
     origin: (origin, callback) => {
         const allowedOrigins = [
-            'https://gdbf.or.tz',
-            'https://gdbf-frontend.vercel.app',
-            'https://gdbf-frontend-cahpskhk5-jerry-jobs-projects.vercel.app'
+            'https://gdbf-frontend-cahpskhk5-jerry-jobs-projects.vercel.app',
+            // 'https://gdbf.or.tz',
+            // 'https://gdbf-frontend.vercel.app'
+            'https://gdbf-frontend-c4yp39b47-jerry-jobs-projects.vercel.app/'
         ];
         if (allowedOrigins.includes(origin)) {
             return callback(null, true);
