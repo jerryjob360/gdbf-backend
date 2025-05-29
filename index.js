@@ -25,10 +25,6 @@ app.use('/uploads', express.static('uploads'));
 
 db.sequelize.sync().then(() => {     //The 'alter: true' should be removed during production.
     app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+        console.log(`🚀 Server running on port ${PORT}`);
     });
 });
-
-sequelize.authenticate()
-  .then(() => console.log('PostgreSQL connection has been established successfully.'))
-  .catch(err => console.error('Unable to connect to the database:', err));
