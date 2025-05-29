@@ -35,7 +35,7 @@ const activityRouter = require('./routes/Activity');
 const { FORCE } = require('sequelize/lib/index-hints');
 app.use("/activity", activityRouter);
 
-app.use('/uploads', express.static(Path2D.join(__dirname,  'uploads')));
+app.use('/uploads', express.static(path.join(__dirname,  'uploads')));
 
 db.sequelize.sync().then(() => {     //The 'alter: true' should be removed during production.
     app.listen(PORT, () => {
