@@ -5,7 +5,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'https://gdbf-frontend.vercel.app/' }));
 
 const db = require('./models');
 // db.sequelize.sync({ force:true });
