@@ -1,4 +1,4 @@
-const config = require(__dirname + '/../config/config.js')[env];
+require('dotenv').config();
 
 
 module.exports = {

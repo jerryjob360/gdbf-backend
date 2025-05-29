@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 
+const PORT = process.env.PORT || 3001;
+
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:3000' }));
 
@@ -22,7 +24,7 @@ app.use("/activity", activityRouter);
 app.use('/uploads', express.static('uploads'));
 
 db.sequelize.sync().then(() => {     //The 'alter: true' should be removed during production.
-    app.listen(3001, () => {
-        console.log("Server running on port 3001");
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
     });
 });
