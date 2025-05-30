@@ -14,7 +14,7 @@ app.use(cors({
             // // 'https://gdbf-frontend.vercel.app'
             // 'https://gdbf-frontend-c4yp39b47-jerry-jobs-projects.vercel.app',
             // 'https://gdbf-frontend-c4yp39b47-jerry-jobs-projects.vercel.app'
-            'https://gdbf-frontend-g4cdgiqah-jerry-jobs-projects.vercel.app/'
+            'https://gdbf-frontend-g4cdgiqah-jerry-jobs-projects.vercel.app'
         ];
         if (allowedOrigins.includes(origin)) {
             return callback(null, true);
