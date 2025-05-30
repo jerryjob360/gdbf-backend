@@ -7,15 +7,8 @@ const path = require('path');
 
 
 // Multer config...
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/');           //save files to the uploads folder in server root folder.
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-const upload = multer({ storage: storage });
+const storage = require('../cloudinaryConfig');
+const upload = multer({ storage });
 
 
 router.get('/', async (req, res) => {
@@ -26,14 +19,18 @@ router.get('/', async (req, res) => {
 router.post("/", upload.single('image'), validateToken,  async (req, res) => {
     try {
         const { title, body } = req.body;
-        const image = req.file ? req.file.filename : null;
+        const imageURL = req.file.path;
 
-        const activity = await Activity.create({ title, body, image });
-        res.json(activity);
+        const newActivity = await Activity.create({ 
+            title, body, 
+            image: imageURL,
+        });
+        res.json(newActivity);
     }
     catch (err){
-        res.status(500).json({ error: 'Failed to create activity' })
+        res.status(500).json({ error: 'Image upload or DB save failed.' })
     }
+    console.log(req.file);
 });
 
 router.delete("/:id", async (req, res) => {
