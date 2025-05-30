@@ -9,7 +9,7 @@ const upload = multer({ storage });
 
 
 // Multer config...
-const storage = require('../cloudinaryConfig');
+// const storage = require('../cloudinaryConfig');
 // const upload = multer({ storage });
 
 
