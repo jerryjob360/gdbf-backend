@@ -4,11 +4,13 @@ const { Activity } = require('../models');
 const { validateToken } = require('../middleware/AuthMiddleware');
 const multer = require('multer');
 const path = require('path');
+const { storage } = require('../cloudinaryConfig');
+const upload = multer({ storage });
 
 
 // Multer config...
 const storage = require('../cloudinaryConfig');
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 
 router.get('/', async (req, res) => {
@@ -19,16 +21,17 @@ router.get('/', async (req, res) => {
 router.post("/", upload.single('image'), validateToken,  async (req, res) => {
     try {
         const { title, body } = req.body;
-        const imageURL = req.file.path;
+        const image = req.file.path;
 
         const newActivity = await Activity.create({ 
-            title, body, 
-            image: imageURL,
+            title,
+            body,
+            image,
         });
-        res.json(newActivity);
+        res.status(200).json(newActivity);
     }
     catch (err){
-        res.status(500).json({ error: 'Image upload or DB save failed.' })
+        res.status(500).json({ error: 'Upload failed.' })
     }
     console.log(req.file);
 });
