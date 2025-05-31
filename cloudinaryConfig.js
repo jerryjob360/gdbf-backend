@@ -11,7 +11,7 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
+    cloudinary,
     params: {
         folder: 'gdbf-events',
         allowed_formats: ['jpg', 'png', 'jpeg'],

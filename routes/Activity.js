@@ -49,7 +49,7 @@ router.put("/:id", upload.single('image'), async (req, res) => {
 
         const updatedFields = { title, body };
         
-        const imagePath = req.file ? `${req.file.filename}` : null;
+        const imagePath = req.file ? req.file.path : null;
 
         if (imagePath) {
             updatedFields.image = imagePath;
