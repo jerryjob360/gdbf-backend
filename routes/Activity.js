@@ -20,7 +20,8 @@ router.get('/', async (req, res) => {
 
 router.post("/", upload.single('image'), validateToken,  async (req, res) => {
     try {
-        const { title, body } = req.body;
+        const { body } = req.body;
+        const { title } = req.title;
         const image = req.file.path;
 
         const newActivity = await Activity.create({ 
