@@ -22,16 +22,17 @@ router.post("/", upload.single('image'), validateToken,  async (req, res) => {
     try {
         const { body } = req.body;
         const { title } = req.title;
-        const image = req.file.path;
+        const { image } = req.file.path;
 
         const newActivity = await Activity.create({ 
             title,
             body,
-            image,
+            image
         });
         res.status(200).json(newActivity);
     }
     catch (err){
+        console.error(err);
         res.status(500).json({ error: 'Upload failed.' })
     }
     console.log(req.file);
