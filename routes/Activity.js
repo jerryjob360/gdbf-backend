@@ -18,12 +18,12 @@ router.get('/', async (req, res) => {
     res.json(listOfActivities);
 });
 
-router.post("/", upload.single('image'), validateToken,  async (req, res) => {
+router.post("/", upload.single('image'), validateToken, async (req, res) => {
     try {
-        console.log(req.title)
         console.log(req.body);
-        const { body } = req.body;
-        const { title } = req.title;
+        console.log(req.file);
+
+        const { title, body } = req.body;
         const image = req.file.path;
 
         const newActivity = await Activity.create({ 
@@ -31,13 +31,12 @@ router.post("/", upload.single('image'), validateToken,  async (req, res) => {
             body,
             image
         });
+
         res.status(200).json(newActivity);
-    }
-    catch (err){
+    } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Upload failed.' })
+        res.status(500).json({ error: err.message }); // show real error
     }
-    console.log(req.file);
 });
 
 router.delete("/:id", async (req, res) => {
