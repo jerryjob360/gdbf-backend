@@ -18,7 +18,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 });
 
 sequelize.authenticate()
-  .then(() => console.log('✅ PostgreSQL connected successfully.'))
+  .then(() => console.log('✅ PostgreSQL connected successfully!'))
   .catch(err => console.error('❌ Unable to connect to PostgreSQL:', err));
 
 fs
