@@ -42,7 +42,7 @@ app.use("/activity", activityRouter);
 
 app.use('/uploads', express.static(path.join(__dirname,  'uploads')));
 
-db.sequelize.sync().then(() => {     //The 'alter: true' should be removed during production.
+db.sequelize.sync({ alter:true }).then(() => {     //The 'alter: true' should be removed during production.
     app.listen(PORT, () => {
         console.log(`🚀 Server running on port ${PORT}`);
     });
