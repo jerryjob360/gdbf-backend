@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING, // stores the file path or URL
             allowNull: true,        // allow null if the image is optional
           },
+          eventDate: {
+            type: DataTypes.DATEONLY,
+            allowNull: true,
+          },
     });
 
     return Activity;
