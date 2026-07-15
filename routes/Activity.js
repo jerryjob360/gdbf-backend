@@ -23,13 +23,14 @@ router.post("/", upload.single('image'), validateToken, async (req, res) => {
         console.log(req.body);
         console.log(req.file);
 
-        const { title, body } = req.body;
+        const { title, body, eventDate } = req.body;
         const image = req.file.path;
 
         const newActivity = await Activity.create({ 
             title,
             body,
-            image
+            image,
+            eventDate
         });
 
         res.status(200).json(newActivity);
