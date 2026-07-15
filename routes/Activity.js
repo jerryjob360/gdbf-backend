@@ -48,10 +48,10 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id", upload.single('image'), async (req, res) => {
     try {
-        const { title, body } = req.body;
+        const { title, body, eventDate } = req.body;
         const activityId = req.params.id;
 
-        const updatedFields = { title, body };
+        const updatedFields = { title, body, eventDate };
         
         const imagePath = req.file ? req.file.path : null;
 
